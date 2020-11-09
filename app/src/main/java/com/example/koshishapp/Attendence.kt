@@ -1,5 +1,6 @@
 package com.example.koshishapp
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,7 +32,8 @@ class Attendence : AppCompatActivity() {
         }
         //for show attendance
         showAtten.setOnClickListener {
-
+            val intent: Intent = Intent(this@Attendence,ShowAttendance::class.java);
+            startActivity(intent);
         }
 
     }
