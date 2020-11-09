@@ -24,10 +24,13 @@ class Attendence : AppCompatActivity() {
         }
         //for mark attendance
         markAtten.setOnClickListener{
-
+            val intent: Intent = Intent(this@Attendence,MarkAttendance::class.java);
+            startActivity(intent);
         }
         //for set time table
         setTime.setOnClickListener {
+            val intent: Intent = Intent(this@Attendence,SetTimeTable::class.java);
+            startActivity(intent);
 
         }
         //for show attendance

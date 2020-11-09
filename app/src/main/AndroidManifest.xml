@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ShowAttendance"></activity>
+        <activity android:name=".SetTimeTable"></activity>
+        <activity android:name=".MarkAttendance" />
+        <activity android:name=".ShowAttendance" />
         <activity android:name=".Addmember" />
         <activity android:name=".Attendence" />
         <activity
