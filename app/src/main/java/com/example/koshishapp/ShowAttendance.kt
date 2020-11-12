@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_mark_attendance.*
 import kotlinx.android.synthetic.main.activity_show_attendance.*
 import java.util.*
 
@@ -15,7 +17,7 @@ class ShowAttendance : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_attendance)
 
-
+/*
         //Function Calling which show the Date Picker Dialog
         start_date_text.setOnClickListener { view ->
             //DatePicker(view)
@@ -35,35 +37,22 @@ class ShowAttendance : AppCompatActivity() {
                 month,
                 dayOfMonth).show()
 
-        }
+        }*/
 
-        end_date_text.setOnClickListener { view ->
-            //DatePicker(view)
-            val myCalendar = Calendar.getInstance()
-            val year = myCalendar.get(Calendar.YEAR)
-            val month = myCalendar.get(Calendar.MONTH)
-            val dayOfMonth = myCalendar.get(Calendar.DAY_OF_MONTH)
+        val arrayList = ArrayList<ModelShowAttendance>()
 
-            DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                Toast.makeText(this,"$year-$month-$dayOfMonth",Toast.LENGTH_LONG).show()
-                val selectedDate = "$year-${month+1}-$dayOfMonth"
-                end_date_text.text = selectedDate
+        arrayList.add(ModelShowAttendance("Dharmvir Dharmacharya"))
+        arrayList.add(ModelShowAttendance("Abhishek Soni"))
+        arrayList.add(ModelShowAttendance("Nandani"))
+        arrayList.add(ModelShowAttendance("Rivya Bist"))
+        arrayList.add(ModelShowAttendance("Manik Rastogi"))
+        arrayList.add(ModelShowAttendance("Anjali Bawa"))
+        arrayList.add(ModelShowAttendance("Netrika Chhetri"))
 
-            },
-                year,
-                month,
-                dayOfMonth).show()
-        }
+        val myAdapter = AdapterShowAttendance(arrayList,this)
 
-        //On click listner by which we can show the attendance
-        view_attendance.setOnClickListener {
-            val sDate = start_date_text.text
-            if (sDate is String){
-                Toast.makeText(this,sDate,Toast.LENGTH_LONG).show()
-            }
-        }
-
-
+        showAttendanceRecyclerview.layoutManager = LinearLayoutManager(this)
+        showAttendanceRecyclerview.adapter = myAdapter
     }
 }
 
