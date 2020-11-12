@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Credentials validation
         loginButton.setOnClickListener{
-            if(username.text.toString() == password.text.toString()) {
+            if(username.text.toString() == password.text.toString() && username.text.isNotEmpty()) {
 
                 val intent: Intent = Intent(this@LoginActivity,Attendence::class.java);
                 startActivity(intent);

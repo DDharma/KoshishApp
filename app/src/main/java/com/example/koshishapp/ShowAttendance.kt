@@ -17,6 +17,13 @@ class ShowAttendance : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_attendance)
 
+        //Calling Get Member Api To get the Member Name from DataBase
+        ApiCalRequest().memberNames()!!.observe(this, androidx.lifecycle.Observer{
+
+            val myAdapter = AdapterShowAttendance(it.member_data_json,this)
+            showAttendanceRecyclerview.layoutManager = LinearLayoutManager(this)
+            showAttendanceRecyclerview.adapter = myAdapter
+        })
 /*
         //Function Calling which show the Date Picker Dialog
         start_date_text.setOnClickListener { view ->
@@ -38,7 +45,7 @@ class ShowAttendance : AppCompatActivity() {
                 dayOfMonth).show()
 
         }*/
-
+        /*
         val arrayList = ArrayList<ModelShowAttendance>()
 
         arrayList.add(ModelShowAttendance("Dharmvir Dharmacharya"))
@@ -49,10 +56,12 @@ class ShowAttendance : AppCompatActivity() {
         arrayList.add(ModelShowAttendance("Anjali Bawa"))
         arrayList.add(ModelShowAttendance("Netrika Chhetri"))
 
+
+
         val myAdapter = AdapterShowAttendance(arrayList,this)
 
         showAttendanceRecyclerview.layoutManager = LinearLayoutManager(this)
-        showAttendanceRecyclerview.adapter = myAdapter
+        showAttendanceRecyclerview.adapter = myAdapter*/
     }
 }
 

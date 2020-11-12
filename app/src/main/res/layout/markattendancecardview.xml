@@ -26,30 +26,35 @@
             android:id="@+id/markAttendanceMemberName"
             />
             <RadioGroup
+                android:id="@+id/markAttendanceRadioGrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
 
                 <RadioButton
+                    android:id="@+id/markAttendanceRadioBtn0"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#A9A9A9"
                     android:textStyle="bold"
                     android:text="ABSENT"/>
                 <RadioButton
+                    android:id="@+id/markAttendanceRadioBtn1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#A9A9A9"
                     android:textStyle="bold"
                     android:text="PRESENT"/>
                 <RadioButton
+                    android:id="@+id/markAttendanceRadioBtn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#A9A9A9"
                     android:textStyle="bold"
                     android:text="INFO-ABS"/>
                 <RadioButton
+                    android:id="@+id/markAttendanceRadioBtn3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#A9A9A9"
@@ -62,11 +67,13 @@
             android:orientation="horizontal"
             android:gravity="center">
             <Button
+                android:id="@+id/markAttendanceData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SELECT DATE"
                 />
             <Button
+                android:id="@+id/markAttendanceBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="MARK ATTENDANCE"

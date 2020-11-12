@@ -1,4 +1,7 @@
 package com.example.koshishapp
 
-class ModelMarkAttendance (val memberName: String) {
-}
+data class ModelMarkAttendance(
+    val NAME:String,
+    val DATE:String,
+    val VALUE:Int
+)
