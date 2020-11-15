@@ -1,9 +1,11 @@
 package com.example.koshishapp
 
 import android.app.DatePickerDialog
+import android.app.ProgressDialog
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -16,6 +18,12 @@ class ShowAttendance : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_attendance)
+
+        val progressBar = ProgressDialog(this)
+        progressBar.setMessage("Loading the Content ... ")
+        progressBar.setCancelable(false)
+        progressBar.show()
+        Handler().postDelayed({progressBar.dismiss()},5000)
 
         //Calling Get Member Api To get the Member Name from DataBase
         ApiCalRequest().memberNames()!!.observe(this, androidx.lifecycle.Observer{

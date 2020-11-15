@@ -2,9 +2,11 @@ package com.example.koshishapp
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -65,7 +67,10 @@ class AdapterShowAttendance (val arrayList: List<String>, val context: Context )
             itemView.showAttendanceBtn.setOnClickListener {
                 try {
                     Toast.makeText(itemView.context,selectedStartDate+"  "+ selectedEndDate+"  "+showAttendanceMemberName,Toast.LENGTH_LONG).show()
-                    ApiCalRequest().showMemberAttendance(showAttendanceMemberName,selectedStartDate,selectedEndDate)
+                    val attendanceReceivedData = ApiCalRequest().showMemberAttendance(showAttendanceMemberName,selectedStartDate,selectedEndDate).value
+                    Log.e("Data",attendanceReceivedData!!.ABSENT.toString())
+
+
                 }
                 catch (e: Exception){
                     Toast.makeText(itemView.context,"PLEASE SELECT ALL THE REQUIRED FIELD AND DATE",Toast.LENGTH_LONG).show()

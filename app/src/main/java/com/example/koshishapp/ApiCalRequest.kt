@@ -13,20 +13,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiCalRequest {
     lateinit var memberReturnData:MutableLiveData<ModelMemberNames>
+    lateinit var attendanceData:MutableLiveData<ModelShowAttendanceReceiveData>
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://049f3d3603ae.ngrok.io/")
+        .baseUrl("https://cc7b0fdf5961.ngrok.io/")
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
         .build()
     val apiEndPointHolder = retrofit.create(EndPointHolder::class.java)
 
     fun memberNames():LiveData<ModelMemberNames>?{
         memberReturnData = MutableLiveData<ModelMemberNames>()
-        /*val retrofit = Retrofit.Builder()
-            .baseUrl("https://049f3d3603ae.ngrok.io/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        val apiEndPointHolder = retrofit.create(EndPointHolder::class.java)*/
-
         apiEndPointHolder.getMemberName().enqueue(object:Callback<ModelMemberNames>{
             override fun onResponse(
                 call: Call<ModelMemberNames>,
@@ -46,6 +41,22 @@ class ApiCalRequest {
         return memberReturnData
     }
 
+    fun addNewMembers(NAME:String, YEAR_OF_JOINING:Int, EMAIL:String, PHONE:Long, LOCATION:String, IS_ADMIN:Int, RESPONSIBILITY:String,
+                      SUNDAY:Int, MONDAY:Int, TUESDAY:Int, WEDNESDAY:Int, THURSDAY:Int, FRIDAY:Int,SATURDAY:Int){
+        val objAddMember = ModelAddMember(NAME, YEAR_OF_JOINING, EMAIL, PHONE, LOCATION, IS_ADMIN, RESPONSIBILITY,
+            SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY)
+        apiEndPointHolder.addNewMember(objAddMember).enqueue(object:Callback<String>{
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.e("Addmember",response.body().toString())
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.e("error",t.message.toString())
+            }
+
+        })
+    }
+
     fun markMembersAttendance(NAME:String, DATE:String, VALUE:Int){
         val objModelMarkAttendance = ModelMarkAttendance(NAME,DATE, VALUE)
         apiEndPointHolder.markMemberAttendance(objModelMarkAttendance).enqueue(object:Callback<String>{
@@ -61,7 +72,8 @@ class ApiCalRequest {
         })
     }
 
-    fun showMemberAttendance(NAME: String,START_DATE:String,END_DATE:String){
+    fun showMemberAttendance(NAME: String,START_DATE:String,END_DATE:String):LiveData<ModelShowAttendanceReceiveData>{
+        attendanceData = MutableLiveData<ModelShowAttendanceReceiveData>()
         val oblModelShowAttendance = ModelShowAttendanceSendData(NAME, START_DATE, END_DATE)
         apiEndPointHolder.showMemberAttendance(oblModelShowAttendance).enqueue(object:Callback<ModelShowAttendanceReceiveData>{
             override fun onResponse(
@@ -69,6 +81,7 @@ class ApiCalRequest {
                 response: Response<ModelShowAttendanceReceiveData>
             ) {
                 Log.e("responce",response.body().toString())
+                attendanceData!!.postValue(response.body())
             }
 
             override fun onFailure(call: Call<ModelShowAttendanceReceiveData>, t: Throwable) {
@@ -76,5 +89,22 @@ class ApiCalRequest {
             }
 
         })
+        return attendanceData
     }
+
+    fun updateMemberTimeTable(NAME:String, SUNDAY:Int, MONDAY:Int, TUESDAY:Int, WEDNESDAY:Int, THURSDAY:Int, FRIDAY:Int,SATURDAY:Int){
+        val objModelSetTimeTable = ModelSetTimeTable(NAME, SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY)
+
+        apiEndPointHolder.updateTimeTable(objModelSetTimeTable).enqueue(object:Callback<String>{
+            override fun onResponse(call: Call<String>, response: Response<String>) {
+                Log.e("Set Time Table",response.body().toString())
+            }
+
+            override fun onFailure(call: Call<String>, t: Throwable) {
+                Log.e("error",t.message.toString())
+            }
+
+        })
+    }
+
 }
