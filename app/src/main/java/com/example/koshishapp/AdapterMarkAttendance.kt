@@ -61,21 +61,26 @@ class AdapterMarkAttendance (val arrayList: List<String>, val context: Context )
                             Toast.makeText(itemView.context,markAttendanceMemberName+" is Absent on "+ selectedDate,Toast.LENGTH_LONG).show()
                             //Adding Api call Here to send the data to Databases
                             ApiCalRequest().markMembersAttendance(markAttendanceMemberName,selectedDate,0)
+                            radioGrp.clearCheck()
+
                         }
                         if (radioBtn1.isChecked){
                             Toast.makeText(itemView.context,markAttendanceMemberName+" is Present on "+ selectedDate,Toast.LENGTH_LONG).show()
                             //Adding Api call Here to send the data to Databases
                             ApiCalRequest().markMembersAttendance(markAttendanceMemberName,selectedDate,1)
+                            radioGrp.clearCheck()
                         }
                         if (radioBtn2.isChecked){
                             Toast.makeText(itemView.context,markAttendanceMemberName+" is Informed Absent on "+selectedDate,Toast.LENGTH_LONG).show()
                             //Adding Api call Here to send the data to Databases
                             ApiCalRequest().markMembersAttendance(markAttendanceMemberName,selectedDate,2)
+                            radioGrp.clearCheck()
                         }
                         if (radioBtn3.isChecked){
                             Toast.makeText(itemView.context,markAttendanceMemberName+" is Extra Present on "+selectedDate,Toast.LENGTH_LONG).show()
                             //Adding Api call Here to send the data to Databases
                             ApiCalRequest().markMembersAttendance(markAttendanceMemberName,selectedDate,3)
+                            radioGrp.clearCheck()
                         }
                     }
                     catch (e:Exception){

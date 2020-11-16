@@ -84,8 +84,26 @@ class Addmember : AppCompatActivity() {
         val markButton = findViewById<Button>(R.id.mark_button);
         markButton.setOnClickListener {
             try {
-                ApiCalRequest().addNewMembers(name.text.toString(),yoj.text.toString().toInt(),email.text.toString(),phone.text.toString().toLong(),location.text.toString()
+                ApiCalRequest().addNewMembers(this,name.text.toString(),yoj.text.toString().toInt(),email.text.toString(),phone.text.toString().toLong(),location.text.toString()
                     ,admin,respon.text.toString(),sunday,monday,tuesday,wednesday,thursday,friday,saturday)
+
+                //Clear all the selected field
+                name.text = ""
+                yoj.text = ""
+                email.text = ""
+                phone.text = ""
+                location.text = ""
+                respon.text = ""
+                findViewById<RadioButton>(R.id.admin).isChecked = false
+                findViewById<RadioButton>(R.id.sunday).isChecked = false
+                findViewById<RadioButton>(R.id.monday).isChecked = false
+                findViewById<RadioButton>(R.id.tuesday).isChecked = false
+                findViewById<RadioButton>(R.id.wednesday).isChecked = false
+                findViewById<RadioButton>(R.id.thursday).isChecked = false
+                findViewById<RadioButton>(R.id.friday).isChecked = false
+                findViewById<RadioButton>(R.id.saturday).isChecked = false
+
+
 
             }catch (e: Exception) {
                 Toast.makeText(
