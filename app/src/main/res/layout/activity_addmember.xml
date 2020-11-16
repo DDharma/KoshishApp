@@ -191,16 +191,17 @@
             android:autofillHints="" />
 
         <Button
+            android:id="@+id/deselectRButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DESELECT ALL THE RADIO BUTTON"/>
+        <Button
             android:id="@+id/mark_button"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="ADD-MEMBER" />
 
-        <TextView
-            android:id="@+id/textbox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </LinearLayout>
     </ScrollView>
 

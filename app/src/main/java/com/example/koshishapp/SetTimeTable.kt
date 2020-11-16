@@ -13,13 +13,13 @@ import kotlinx.android.synthetic.main.activity_set_time_table.*
 import java.lang.Exception
 
 class SetTimeTable : AppCompatActivity() {
-    var sunday:Int = 0
+    /*var sunday:Int = 0
     var monday:Int = 0
     var tuesday:Int = 0
     var wednesday:Int = 0
     var thursday:Int = 0
     var friday:Int = 0
-    var saturday:Int = 0
+    var saturday:Int = 0*/
     var name:String = ""
     lateinit var option:Spinner
 
@@ -59,52 +59,53 @@ class SetTimeTable : AppCompatActivity() {
 
             }
         })
-        sunday = if (findViewById<RadioButton>(R.id.set_sunday).isChecked){
-            1
-        }else{
-            0
-        }
 
-        monday = if (findViewById<RadioButton>(R.id.set_monday).isChecked){
-            1
-        }else{
-            0
-        }
-
-        tuesday = if (findViewById<RadioButton>(R.id.set_tuesday).isChecked){
-            1
-        }else{
-            0
-        }
-
-        wednesday = if (findViewById<RadioButton>(R.id.set_wednesday).isChecked){
-            1
-        }else{
-            0
-        }
-
-        thursday = if (findViewById<RadioButton>(R.id.set_thursday).isChecked){
-            1
-        }else{
-            0
-        }
-
-        friday = if (findViewById<RadioButton>(R.id.set_friday).isChecked){
-            1
-        }else{
-            0
-        }
-
-        saturday = if (findViewById<RadioButton>(R.id.set_saturday).isChecked){
-            1
-        }else{
-            0
-        }
 
         set_mark_button.setOnClickListener {
             try {
+                val sunday = if (findViewById<RadioButton>(R.id.set_sunday).isChecked){
+                    1
+                }else{
+                    0
+                }
 
+                val monday = if (findViewById<RadioButton>(R.id.set_monday).isChecked){
+                    1
+                }else{
+                    0
+                }
+
+                val tuesday = if (findViewById<RadioButton>(R.id.set_tuesday).isChecked){
+                    1
+                }else{
+                    0
+                }
+
+                val wednesday = if (findViewById<RadioButton>(R.id.set_wednesday).isChecked){
+                    1
+                }else{
+                    0
+                }
+
+                val thursday = if (findViewById<RadioButton>(R.id.set_thursday).isChecked){
+                    1
+                }else{
+                    0
+                }
+
+                val friday = if (findViewById<RadioButton>(R.id.set_friday).isChecked){
+                    1
+                }else{
+                    0
+                }
+
+                val saturday = if (findViewById<RadioButton>(R.id.set_saturday).isChecked){
+                    1
+                }else{
+                    0
+                }
                 ApiCalRequest().updateMemberTimeTable(this,name,sunday,monday,tuesday,wednesday,thursday,friday,saturday)
+
 
                 findViewById<RadioButton>(R.id.set_saturday).isChecked = false;
                 findViewById<RadioButton>(R.id.set_monday).isChecked = false
@@ -124,5 +125,15 @@ class SetTimeTable : AppCompatActivity() {
 
         }
 
+        //Deselect all the RButton
+        deselectRButton1.setOnClickListener {
+            findViewById<RadioButton>(R.id.set_saturday).isChecked = false;
+            findViewById<RadioButton>(R.id.set_monday).isChecked = false
+            findViewById<RadioButton>(R.id.set_tuesday).isChecked = false
+            findViewById<RadioButton>(R.id.set_wednesday).isChecked = false
+            findViewById<RadioButton>(R.id.set_thursday).isChecked = false
+            findViewById<RadioButton>(R.id.set_friday).isChecked = false
+            findViewById<RadioButton>(R.id.set_sunday).isChecked = false
+        }
     }
 }
