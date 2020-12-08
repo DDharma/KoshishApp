@@ -38,11 +38,20 @@ class LoginActivity : AppCompatActivity() {
 
         //Credentials validation
         loginButton.setOnClickListener{
-            if(username.text.toString() == password.text.toString() && username.text.isNotEmpty()) {
+            if(username.text.toString() == "admin" && password.text.toString() == "admin" && username.text.isNotEmpty() && password.text.isNotEmpty()) {
 
                 val intent: Intent = Intent(this@LoginActivity,Attendence::class.java);
+                intent.putExtra("admin","YES");
                 startActivity(intent);
-                Toast.makeText(this, "Welcome to login", Toast.LENGTH_LONG).show();
+                //Toast.makeText(this, "Welcome to login", Toast.LENGTH_LONG).show();
+
+            }
+            else if(username.text.toString() == "user" && password.text.toString() == "user" && username.text.isNotEmpty() && password.text.isNotEmpty()) {
+
+                val intent: Intent = Intent(this@LoginActivity,Attendence::class.java);
+                intent.putExtra("admin","NO");
+                startActivity(intent);
+                //Toast.makeText(this, "Welcome to login", Toast.LENGTH_LONG).show();
 
             }
             else{

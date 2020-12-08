@@ -18,7 +18,7 @@ class ApiCalRequest {
     lateinit var memberReturnData:MutableLiveData<ModelMemberNames>
     //lateinit var attendanceData:MutableLiveData<ModelShowAttendanceReceiveData>
     val retrofit = Retrofit.Builder()
-        .baseUrl("https://cc7b0fdf5961.ngrok.io/")
+        .baseUrl("https://koshish-attendance-api.herokuapp.com/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val apiEndPointHolder = retrofit.create(EndPointHolder::class.java)

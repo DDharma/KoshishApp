@@ -1,6 +1,7 @@
 package com.example.koshishapp
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
@@ -44,7 +45,10 @@ class MainActivity : AppCompatActivity() {
 
         // All listener
         kLogo.setOnClickListener{
-            Toast.makeText(this, "Welocom to the koshish is click", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Welocom to the KOSHISH Store", Toast.LENGTH_SHORT).show()
+            val openURL = Intent(android.content.Intent.ACTION_VIEW)
+            openURL.data = Uri.parse("https://koshishfamily.org/store/")
+            startActivity(openURL)
         }
 
         pathsala.setOnClickListener{

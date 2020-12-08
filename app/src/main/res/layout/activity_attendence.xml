@@ -39,6 +39,7 @@
                     android:src="@drawable/baseline_add_box_black_18dp"></ImageView>
 
                 <TextView
+                    android:id="@+id/add_member_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -69,6 +70,7 @@
                     android:src="@drawable/baseline_how_to_reg_black_18dp"></ImageView>
 
                 <TextView
+                    android:id="@+id/mark_attendance_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -105,6 +107,7 @@
                     android:src="@drawable/baseline_access_time_black_18dp"></ImageView>
 
                 <TextView
+                    android:id="@+id/set_timetable_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -133,6 +136,7 @@
                     android:src="@drawable/baseline_developer_board_black_18dp"></ImageView>
 
                 <TextView
+                    android:id="@+id/show_attendance_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
